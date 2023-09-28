@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use Illuminate\Support\Facades\Redis;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +15,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+
+Route::get('/create_redis_data', function () {
+    Redis::set('user:1:Firstname','jpsandiego');
+    Redis::set('user:2:Firstname','jpsandiego1');
+
+    echo Redis::get('user:1:Firstname');
+    echo Redis::get('user:2:Firstname');
 });
